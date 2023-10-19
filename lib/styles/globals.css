@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #373737; /* 前景色：文字 */
+  --background: #eeeeee; /* 背景色：背景 */
+  --background-rgba: 242, 242, 242;
+  --background-fore: #fafafa; /* 背景色上层区分色(用于分类)：侧边栏选中、 */
+  --background-fore-rgba: 250, 250, 250;
+  --background-header: #e3e3e3;
+  --background-prose: #f3f3f3;
+  --background-config-category: #ffffff;
+}
+
+[data-theme="dark"] {
+  --foreground: #d3d3d3;
+  --background: #111111;
+  --background-rgba: 17, 17, 17;
+  --background-fore: #1f1f1f;
+  --background-fore-rgba: 31, 31, 31;
+  --background-header: #383838;
+  --background-prose: #2c2c2c;
+  --background-config-category: #2a2a2a;
+}
+
+/* 字体 */
+@font-face {
+  font-style: normal;
+  font-family: "HarmonyOS";
+  src: url("/fonts/HarmonyOS_Sans_SC_Regular.ttf") format("truetype");
+}
+
+/* 修改滚动条样式 */
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c0c1c550;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #c0c1c550;
+}
