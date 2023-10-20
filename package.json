@@ -15,6 +15,7 @@
     "taze:minor": "taze minor -w"
   },
   "dependencies": {
+    "@egjs/react-grid": "^1.15.2",
     "@monaco-editor/react": "^4.6.0",
     "lucide-react": "^0.279.0",
     "next": "13.5.6",

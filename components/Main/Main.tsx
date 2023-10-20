@@ -58,9 +58,9 @@ const Main = () => {
 
   return (
     <div ref={boxRef} className='w-full h-full flex p-1'>
-      <Editor ref={editorRef} className='w-1/2 bg-slate-400 shadow-md rounded-lg' />
+      <Editor ref={editorRef} className='w-1/2 bg-[var(--background)] shadow-md rounded-lg' />
       <ResizeBar ref={resizeBarRef} />
-      <Display ref={displayRef} className='w-1/2 bg-slate-500 shadow-md rounded-lg' />
+      <Display ref={displayRef} className='w-1/2 shadow-md rounded-lg' />
     </div>
   )
 }

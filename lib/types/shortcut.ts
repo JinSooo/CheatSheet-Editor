@@ -1,4 +1,5 @@
 export interface ShortCut {
+  $schema: string
   name: string
   categories: ShortCutCategory[]
 }
@@ -14,9 +15,9 @@ export interface ShortCutItem {
 }
 
 export interface ShortCutCommand {
-  win: string
-  mac: string
-  linux: string
+  win?: string
+  mac?: string
+  linux?: string
 }
 
 export interface ShortCutKind {

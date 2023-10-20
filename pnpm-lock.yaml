@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@egjs/react-grid':
+    specifier: ^1.15.2
+    version: 1.15.2
   '@monaco-editor/react':
     specifier: ^4.6.0
     version: 4.6.0(monaco-editor@0.44.0)(react-dom@18.2.0)(react@18.2.0)
@@ -169,6 +172,47 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@cfcs/core@0.0.24:
+    resolution: {integrity: sha512-feB38qu+eDk0Pggh/yR7gjaNmvUYA2uCxHP3Pz2MLE4LZ/9jPdtu8bzCSI47yTEhWyZCF5Pk698hdz8IN2mTjA==}
+    dependencies:
+      '@egjs/component': 3.0.4
+    dev: false
+
+  /@egjs/children-differ@1.0.1:
+    resolution: {integrity: sha512-DRvyqMf+CPCOzAopQKHtW+X8iN6Hy6SFol+/7zCUiE5y4P/OB8JP8FtU4NxtZwtafvSL4faD5KoQYPj3JHzPFQ==}
+    dependencies:
+      '@egjs/list-differ': 1.0.1
+    dev: false
+
+  /@egjs/component@3.0.4:
+    resolution: {integrity: sha512-sXA7bGbIeLF2OAw/vpka66c6QBBUPcA4UUhR4WGJfnp2XWdiI8QrnJGJMr/UxpE/xnevX9tN3jvNPlW8WkHl3g==}
+    dev: false
+
+  /@egjs/grid@1.14.2:
+    resolution: {integrity: sha512-MOIL6zdFmEFYVmlsrPr8eNPybDZqRKzJo1sceFiamAvxWJ+5yG17tVRP9zMSeXogjsShWhNUKqoPOUC4rClFAQ==}
+    dependencies:
+      '@egjs/children-differ': 1.0.1
+      '@egjs/component': 3.0.4
+      '@egjs/imready': 1.4.1
+    dev: false
+
+  /@egjs/imready@1.4.1:
+    resolution: {integrity: sha512-JIOBs4lB7FYdsKi5uvz2j3SObX8eShtZjtqlOH41tm185aJOQZwiKBK8+V4MxzG4X6DqVhpdN8UcuVwBbElfsg==}
+    dependencies:
+      '@cfcs/core': 0.0.24
+      '@egjs/component': 3.0.4
+    dev: false
+
+  /@egjs/list-differ@1.0.1:
+    resolution: {integrity: sha512-OTFTDQcWS+1ZREOdCWuk5hCBgYO4OsD30lXcOCyVOAjXMhgL5rBRDnt/otb6Nz8CzU0L/igdcaQBDLWc4t9gvg==}
+    dev: false
+
+  /@egjs/react-grid@1.15.2:
+    resolution: {integrity: sha512-5yai5v7a+nOZR6yQ4ByLFAgFHeFCVqb17wQxbw7mWGO2CTcm5IxkJnaujy96ikEdKrCwpI3SM5fK7iZAnREnpw==}
+    dependencies:
+      '@egjs/grid': 1.14.2
+    dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.51.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
