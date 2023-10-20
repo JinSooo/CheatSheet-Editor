@@ -13,7 +13,7 @@ const Category = ({ category }: Props) => {
   const [os, resizeRatio] = useGlobalStore((state) => [state.os, state.resizeRatio])
   // 根据显示区域的比例计算分类比例
   const categoryRatio = useMemo(() => {
-    if (typeof window === 'undefined') return 33
+    if (typeof window === 'undefined') return 50
 
     const displayRatio = 100 - resizeRatio
     const width = (document.body.clientWidth * displayRatio) / 100
@@ -25,7 +25,7 @@ const Category = ({ category }: Props) => {
   }, [resizeRatio])
 
   return (
-    <div className='box-border px-6 pb-6' style={{ width: `${categoryRatio}%` }}>
+    <div className={`box-border px-6 pb-6`} style={{width: `${categoryRatio}%`}}>
       <div className='font-bold ml-[40%] pl-3 pb-3'>{category.name}</div>
       {category.shortcuts.map((shortcut) => (
         <>
