@@ -15,26 +15,28 @@
     "taze:minor": "taze minor -w"
   },
   "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
+    "@monaco-editor/react": "^4.6.0",
+    "lucide-react": "^0.279.0",
     "next": "13.5.6",
     "next-themes": "^0.2.1",
-    "lucide-react": "^0.279.0"
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@biomejs/biome": "1.2.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
-    "postcss": "^8",
-    "tailwindcss": "^3",
     "daisyui": "^3.8.0",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",
-    "@biomejs/biome": "1.2.2",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "taze": "^0.11.2"
+    "postcss": "^8",
+    "tailwindcss": "^3",
+    "taze": "^0.11.2",
+    "typescript": "^5"
   }
 }
