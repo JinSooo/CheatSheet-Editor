@@ -1,6 +1,7 @@
-import { HTMLAttributes, forwardRef, useEffect, useRef } from 'react'
+import { HTMLAttributes, forwardRef, useCallback, useEffect, useRef } from 'react'
 import ShortCut from './ShortCut'
 import useGlobalStore from '@/lib/store'
+import { debounce } from '@/lib/utils'
 
 // 默认 ShortCut 窗口显示的大小比例
 const ratio = 9 / 16
@@ -9,14 +10,28 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
   const resizeRatio = useGlobalStore((state) => state.resizeRatio)
   const shortCutRef = useRef<HTMLDivElement>(null)
 
-  const adjustShortCutSize = () => {
-    if (!shortCutRef.current || !ref) return
-    shortCutRef.current.style.height = `${shortCutRef.current.clientWidth * ratio}px`
+  const adjustShortCutSize = useCallback(
+    debounce(() => {
+      if (!shortCutRef.current) return
+      shortCutRef.current.style.height = `${shortCutRef.current.clientWidth * ratio}px`
+    }),
+    [shortCutRef],
+  )
+
+  const init = () => {
+    // 窗口改变后重新调整大小
+    window.addEventListener('resize', () => {
+      adjustShortCutSize()
+    })
   }
 
   useEffect(() => {
     adjustShortCutSize()
   }, [resizeRatio])
+
+  useEffect(() => {
+    init()
+  }, [])
 
   return (
     <div

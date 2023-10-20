@@ -2,7 +2,7 @@ export * from './shortcut'
 export * from './toast'
 
 // 防抖函数
-export const debounce = (fn: (...args: unknown[]) => void, delay = 50) => {
+export const debounce = (fn: (...args: unknown[]) => void, delay = 100) => {
   let timer: NodeJS.Timeout | null = null
 
   return (...args: unknown[]) => {
@@ -10,14 +10,14 @@ export const debounce = (fn: (...args: unknown[]) => void, delay = 50) => {
       clearTimeout(timer)
     }
     timer = setTimeout(() => {
-      fn(...args)
+      fn.apply(this, args)
       timer = null
     }, delay)
   }
 }
 
 // 节流函数
-export const throttle = (fn: (...args: unknown[]) => void, delay = 50) => {
+export const throttle = (fn: (...args: unknown[]) => void, delay = 100) => {
   let timer: NodeJS.Timeout | null = null
 
   return (...args: unknown[]) => {
