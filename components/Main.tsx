@@ -28,23 +28,25 @@ const Main = () => {
       const maxT = box.clientWidth - resizeBar.offsetWidth // 容器宽度 - 左边区域的宽度 = 右边区域的宽度
       resizeBar.style.backgroundColor = '#7F8081'
 
-      // 节流设置
-      document.body.onmousemove = (e) =>
-        throttle(() => {
-          console.log('11111')
-          const endX = e.clientX
-          let moveLen = left + (endX - startX)
+      // @ts-ignore
+      const handleMouseMove = throttle((e: MouseEvent) => {
+        const endX = e.clientX
+        let moveLen = left + (endX - startX)
 
+        if (moveLen < 200)
           // 左右区域最小限制
-          if (moveLen < 200) moveLen = 200
-          if (moveLen > maxT - 200) moveLen = maxT - 200
+          moveLen = 200
+        if (moveLen > maxT - 200) moveLen = maxT - 200
 
-          const ratio = (moveLen / (maxT - 8)) * 100
-          editor.style.width = `${ratio}%`
-          display.style.width = `${100 - ratio}%`
+        const ratio = (moveLen / (maxT - 8)) * 100
+        editor.style.width = `${ratio}%`
+        display.style.width = `${100 - ratio}%`
 
-          setResizeRatio(ratio)
-        }, 10)()
+        setResizeRatio(ratio)
+      }, 50)
+
+      // 节流设置
+      document.body.onmousemove = handleMouseMove
 
       document.body.onmouseup = () => {
         document.body.onmousemove = null
