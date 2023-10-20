@@ -3,20 +3,31 @@
 import { ShortCutCategory } from '@/lib/types'
 import ShortCutItem from './ShortCutItem'
 import useGlobalStore from '@/lib/store'
+import { useMemo } from 'react'
 
 interface Props {
   category: ShortCutCategory
 }
 
 const Category = ({ category }: Props) => {
-  const os = useGlobalStore((state) => state.os)
+  const [os, resizeRatio] = useGlobalStore((state) => [state.os, state.resizeRatio])
+  // 根据显示区域的比例计算分类比例
+  const categoryRatio = useMemo(() => {
+    if (typeof window === 'undefined') return 33
+
+    const displayRatio = 100 - resizeRatio
+    const width = (document.body.clientWidth * displayRatio) / 100
+
+    if (width >= 1280) return 25
+    else if (width >= 1024) return 33
+    else if (width >= 640) return 50
+    else return 100
+  }, [resizeRatio])
 
   return (
-    // 四等分
-    <div className='box-border px-6 pb-6'>
+    <div className='box-border px-6 pb-6' style={{ width: `${categoryRatio}%` }}>
       <div className='font-bold ml-[40%] pl-3 pb-3'>{category.name}</div>
       {category.shortcuts.map((shortcut) => (
-        // 系统存在对应快捷键才显示
         <>
           {shortcut.command[os] && (
             <ShortCutItem
