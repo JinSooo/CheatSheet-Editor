@@ -9,7 +9,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='zh-CN'>
+    <html lang='zh-CN' data-theme="light" style={{colorScheme: 'light'}}>
       <body>
         <ThemeProvider attribute='data-theme' defaultTheme='system' enableSystem>
           <div className='w-full h-full flex flex-col'>
