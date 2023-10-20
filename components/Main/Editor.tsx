@@ -1,7 +1,11 @@
-import { HTMLAttributes } from 'react'
+import { HTMLAttributes, forwardRef } from 'react'
 
-const Editor = (props: HTMLAttributes<HTMLDivElement>) => {
-  return <div {...props}>Editor</div>
-}
+const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(props, ref) {
+  return (
+    <div ref={ref} {...props}>
+      Editor
+    </div>
+  )
+})
 
 export default Editor
