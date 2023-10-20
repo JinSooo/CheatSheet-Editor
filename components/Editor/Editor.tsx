@@ -3,13 +3,16 @@ import { Monaco, Editor as MonacoEditor } from '@monaco-editor/react'
 import schema from '@/public/json/schema.json'
 import useGlobalStore from '@/lib/store'
 
+// 编辑器是否存在错误
+let hasError = false
+
 const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(props, ref) {
   const [shortcut, setShortCut] = useGlobalStore((state) => [state.shortcut, state.setShortCut])
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const onMount = (editor: any, monaco: Monaco) => {
+  const handleMount = (editor: any, monaco: Monaco) => {
     const modelUri = 'schema'
-    const model = monaco.editor.createModel(JSON.stringify(shortcut), 'json', monaco.Uri.parse(modelUri))
+    const model = monaco.editor.createModel(shortcut, 'json', monaco.Uri.parse(modelUri))
     editor.setModel(model)
 
     monaco.languages.json.jsonDefaults.setDiagnosticsOptions({
@@ -25,9 +28,19 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
     })
   }
 
+  const handleChange = (value: string | undefined, ev: any) => {
+    if (hasError) return
+
+    setShortCut(value ?? '')
+  }
+  const handleValidate = (markers: any) => {
+    if (markers.length === 0) hasError = false
+    else hasError = true
+  }
+
   return (
     <div ref={ref} className='w-1/2 shadow-md rounded-lg' {...props}>
-      <MonacoEditor options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }} onMount={onMount} />
+      <MonacoEditor options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }} onMount={handleMount} onChange={handleChange} onValidate={handleValidate} />
     </div>
   )
 })
