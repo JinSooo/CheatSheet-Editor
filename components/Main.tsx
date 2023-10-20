@@ -5,8 +5,10 @@ import Display from './Display/Display'
 import Editor from './Editor/Editor'
 import ResizeBar from './common/ResizeBar'
 import { throttle } from '@/lib/utils'
+import useGlobalStore from '@/lib/store'
 
 const Main = () => {
+  const setResizeRatio = useGlobalStore((state) => state.setResizeRatio)
   const boxRef = useRef<HTMLDivElement>(null)
   const editorRef = useRef<HTMLDivElement>(null)
   const displayRef = useRef<HTMLDivElement>(null)
@@ -40,6 +42,8 @@ const Main = () => {
           const ratio = (moveLen / (maxT - 8)) * 100
           editor.style.width = `${ratio}%`
           display.style.width = `${100 - ratio}%`
+
+          setResizeRatio(ratio)
         }, 10)()
 
       document.body.onmouseup = () => {
@@ -58,9 +62,9 @@ const Main = () => {
 
   return (
     <div ref={boxRef} className='w-full h-full flex p-1'>
-      <Editor ref={editorRef} className='w-1/2 bg-[var(--background)] shadow-md rounded-lg' />
+      <Editor ref={editorRef} />
       <ResizeBar ref={resizeBarRef} />
-      <Display ref={displayRef} className='w-1/2 shadow-md rounded-lg' />
+      <Display ref={displayRef} />
     </div>
   )
 }

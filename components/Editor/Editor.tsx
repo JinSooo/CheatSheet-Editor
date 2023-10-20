@@ -26,7 +26,7 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
   }
 
   return (
-    <div ref={ref} {...props}>
+    <div ref={ref} className='w-1/2 shadow-md rounded-lg' {...props}>
       <MonacoEditor options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }} onMount={onMount} />
     </div>
   )

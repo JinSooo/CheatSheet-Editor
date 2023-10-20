@@ -13,7 +13,7 @@ const Category = ({ category }: Props) => {
 
   return (
     // 四等分
-    <div className='box-border px-6 pb-6 w-[100%] sm:w-[50%] lg:w-[33%] xl:w-[25%]'>
+    <div className='box-border px-6 pb-6'>
       <div className='font-bold ml-[40%] pl-3 pb-3'>{category.name}</div>
       {category.shortcuts.map((shortcut) => (
         // 系统存在对应快捷键才显示
