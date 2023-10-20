@@ -3,7 +3,7 @@
 import { ShortCutCategory } from '@/lib/types'
 import ShortCutItem from './ShortCutItem'
 import useGlobalStore from '@/lib/store'
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 
 interface Props {
   category: ShortCutCategory
@@ -28,15 +28,14 @@ const Category = ({ category }: Props) => {
     <div className={`box-border px-6 pb-6`} style={{width: `${categoryRatio}%`}}>
       <div className='font-bold ml-[40%] pl-3 pb-3'>{category.name}</div>
       {category.shortcuts.map((shortcut) => (
-        <>
+        <Fragment key={category.name + shortcut.description}>
           {shortcut.command[os] && (
             <ShortCutItem
-              key={shortcut.description}
               command={shortcut.command[os] as string}
               description={shortcut.description}
             />
           )}
-        </>
+        </Fragment>
       ))}
     </div>
   )

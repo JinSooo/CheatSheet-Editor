@@ -141,10 +141,6 @@
           "description": "粘贴"
         },
         {
-          "command": { "win": "Ctrl+D", "mac": "Command+D", "linux": "Ctrl+D" },
-          "description": "复制"
-        },
-        {
           "command": { "win": "Ctrl+E", "mac": "Command+E", "linux": "Ctrl+E" },
           "description": "编辑/重命名"
         }
