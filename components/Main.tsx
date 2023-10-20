@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
-import Display from './Display'
-import Editor from './Editor'
-import ResizeBar from './ResizeBar'
+import Display from './Display/Display'
+import Editor from './Editor/Editor'
+import ResizeBar from './common/ResizeBar'
 import { throttle } from '@/lib/utils'
 
 const Main = () => {
