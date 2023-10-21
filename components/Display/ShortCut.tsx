@@ -4,15 +4,15 @@ import { MasonryGrid } from '@egjs/react-grid'
 import Category from './Category'
 import useGlobalStore from '@/lib/store'
 import { useEffect, useState } from 'react'
-import { ShortCut } from '@/lib/types'
+import { ShortCut as ShortCutType } from '@/lib/types'
 
 const ShortCut = () => {
   const shortcutStr = useGlobalStore((state) => state.shortcut)
-  const [shortcut, setShortCut] = useState<ShortCut | null>(null)
+  const [shortcut, setShortCut] = useState<ShortCutType | null>(null)
 
   useEffect(() => {
     try {
-      const sc = JSON.parse(shortcutStr) as ShortCut
+      const sc = JSON.parse(shortcutStr) as ShortCutType
       setShortCut(sc)
     } catch (error) {
       console.error(error)
@@ -21,7 +21,7 @@ const ShortCut = () => {
 
   return (
     <div className='w-full h-full box-border p-6 select-none'>
-      <MasonryGrid observeChildren={true} useResizeObserver={true}>
+      <MasonryGrid observeChildren={true} useResizeObserver={true} autoResize={true}>
         {shortcut?.categories.map((category) => (
           <Category key={category.name} category={category} />
         ))}

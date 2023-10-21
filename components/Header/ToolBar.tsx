@@ -1,6 +1,6 @@
 'use client'
 
-import { Contrast, PanelLeftOpen, PanelRightOpen, Sun } from 'lucide-react'
+import { Contrast, HelpCircle, PanelLeftOpen, PanelRightOpen, Share, Sun } from 'lucide-react'
 import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
@@ -54,6 +54,8 @@ const ToolBar = () => {
         />
       </div>
       <div className='flex gap-3'>
+        <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' />
+        <DropDownButton icon={<Share size={18} />} tooltip='导出' position='right' />
         <DropDownButton
           icon={<PanelLeftOpen size={18} color={displayArea === -1 ? '#3ABFF8' : 'currentColor'} />}
           tooltip={displayArea === -1 ? '恢复默认' : '仅编辑区'}
