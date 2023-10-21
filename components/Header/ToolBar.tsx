@@ -1,9 +1,9 @@
 import { AlignHorizontalJustifyCenter } from 'lucide-react'
-import DropDownButton from './common/DropDownButton'
+import DropDownButton from '../common/DropDownButton'
 
-const Header = () => {
+const ToolBar = () => {
   return (
-    <header className='flex justify-between px-3 py-1 shadow-md border-b-[1px]'>
+    <div className='flex justify-between px-3 py-1 shadow-md border-y-[1px]'>
       <div className='flex gap-3'>
         <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
         <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
@@ -14,8 +14,8 @@ const Header = () => {
       <div className='flex gap-3'>
         <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} position='right' />
       </div>
-    </header>
+    </div>
   )
 }
 
-export default Header
+export default ToolBar
