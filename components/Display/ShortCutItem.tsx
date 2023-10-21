@@ -7,7 +7,7 @@ interface Props {
 
 const ShortCutItem = ({ command, description }: Props) => {
   return (
-    <div className='flex gap-4 mb-3 overflow-hidden items-center'>
+    <div className='flex gap-4 mb-3 overflow-hidden items-center shortcut-tooltip'>
       <div className='w-[40%] text-right flex justify-end gap-1'>
         <ShortCutCommand command={command} />
       </div>

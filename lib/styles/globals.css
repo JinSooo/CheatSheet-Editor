@@ -72,4 +72,15 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+
+  /* 修改提示框的选中背景色和字体颜色 */
+  .shortcut-tooltip > .tooltip:before {
+    color: var(--foreground);
+    /* tooltip换行显示 */
+    white-space: break-spaces;
+    /* 显示位置 */
+    left: 1rem;
+    transform: none;
+    max-width: 15rem;
+  }
 }

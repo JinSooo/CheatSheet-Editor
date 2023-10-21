@@ -12,7 +12,6 @@ export default function Home() {
 
   // 如果系统默认为黑色，则将编辑器也设置为黑色
   useEffect(() => {
-    console.log(theme)
     if (theme.theme === 'light' || (theme.theme === 'system' && theme.resolvedTheme === 'light'))
       setEditorTheme('light')
     else setEditorTheme('vs-dark')
