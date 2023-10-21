@@ -7,6 +7,7 @@ import useGlobalStore from '@/lib/store'
 let hasError = false
 
 const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(props, ref) {
+  const editorTheme = useGlobalStore((state) => state.editorTheme)
   const [shortcut, setShortCut] = useGlobalStore((state) => [state.shortcut, state.setShortCut])
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -28,11 +29,14 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
     })
   }
 
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const handleChange = (value: string | undefined, ev: any) => {
     if (hasError) return
 
     setShortCut(value ?? '')
   }
+
+  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const handleValidate = (markers: any) => {
     if (markers.length === 0) hasError = false
     else hasError = true
@@ -40,7 +44,13 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
 
   return (
     <div ref={ref} className='w-1/2 shadow-md rounded-lg' {...props}>
-      <MonacoEditor options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }} onMount={handleMount} onChange={handleChange} onValidate={handleValidate} />
+      <MonacoEditor
+        theme={editorTheme}
+        options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }}
+        onMount={handleMount}
+        onChange={handleChange}
+        onValidate={handleValidate}
+      />
     </div>
   )
 })

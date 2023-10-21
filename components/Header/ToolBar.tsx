@@ -4,15 +4,25 @@ import { Contrast, Sun } from 'lucide-react'
 import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
+import useGlobalStore from '@/lib/store'
 
 const ToolBar = () => {
   const { setTheme } = useTheme()
+  const [setEditorTheme] = useGlobalStore((state) => [state.setEditorTheme])
+
+  const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
+    // @ts-ignore
+    if (e.target.tagName === 'A') {
+      // @ts-ignore
+      setTheme(e.target.dataset.key)
+    }
+  }
 
   const handleEditorTheme = (e: MouseEvent<HTMLUListElement>) => {
     // @ts-ignore
     if (e.target.tagName === 'A') {
       // @ts-ignore
-      setTheme(e.target.dataset.key)
+      setEditorTheme(e.target.dataset.key)
     }
   }
 
@@ -26,6 +36,7 @@ const ToolBar = () => {
             { key: 'vs-dark', value: '暗色' },
           ]}
           tooltip='编辑器主题'
+          onClick={handleEditorTheme}
         />
       </div>
       <div className='flex gap-3'>
@@ -38,7 +49,7 @@ const ToolBar = () => {
           ]}
           tooltip='主题'
           position='right'
-          onClick={handleEditorTheme}
+          onClick={handleGlobalTheme}
         />
       </div>
     </div>
