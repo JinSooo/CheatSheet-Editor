@@ -1,6 +1,6 @@
 'use client'
 
-import { Contrast, HelpCircle, PanelLeftOpen, PanelRightOpen, Share, Sun } from 'lucide-react'
+import { Contrast, HelpCircle, ListRestart, PanelLeftOpen, PanelRightOpen, RotateCcw, Share, Sun } from 'lucide-react'
 import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
@@ -8,25 +8,37 @@ import useGlobalStore from '@/lib/store'
 
 const ToolBar = () => {
   const { setTheme } = useTheme()
-  const [setEditorTheme, setDisplayArea, displayArea] = useGlobalStore((state) => [
-    state.setEditorTheme,
-    state.setDisplayArea,
-    state.displayArea,
-  ])
-
-  const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
-    // @ts-ignore
-    if (e.target.tagName === 'A') {
-      // @ts-ignore
-      setTheme(e.target.dataset.key)
-    }
-  }
+  const [setEditorTheme, setDisplayArea, displayArea, setShortCutDefault, setShortCutCase] = useGlobalStore(
+    (state) => [
+      state.setEditorTheme,
+      state.setDisplayArea,
+      state.displayArea,
+      state.setShortCutDefault,
+      state.setShortCutCase,
+    ],
+  )
 
   const handleEditorTheme = (e: MouseEvent<HTMLUListElement>) => {
     // @ts-ignore
     if (e.target.tagName === 'A') {
       // @ts-ignore
       setEditorTheme(e.target.dataset.key)
+    }
+  }
+
+  const handleEditorReset = () => {
+    setShortCutDefault()
+  }
+
+  const handleEditorCase = () => {
+    setShortCutCase()
+  }
+
+  const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
+    // @ts-ignore
+    if (e.target.tagName === 'A') {
+      // @ts-ignore
+      setTheme(e.target.dataset.key)
     }
   }
 
@@ -52,6 +64,8 @@ const ToolBar = () => {
           tooltip='编辑器主题'
           onItemClick={handleEditorTheme}
         />
+        <DropDownButton icon={<RotateCcw size={18} />} tooltip='重置' onClick={handleEditorReset} />
+        <DropDownButton icon={<ListRestart size={18} />} tooltip='案例' onClick={handleEditorCase} />
       </div>
       <div className='flex gap-3'>
         <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' />

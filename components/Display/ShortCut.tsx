@@ -15,7 +15,7 @@ const ShortCut = () => {
       const sc = JSON.parse(shortcutStr) as ShortCutType
       setShortCut(sc)
     } catch (error) {
-      console.error(error)
+      console.error('parse shortcut error')
     }
   }, [shortcutStr])
 

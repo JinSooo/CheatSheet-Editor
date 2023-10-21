@@ -13,11 +13,30 @@ type Action = {
   setOS: (os: State['os']) => void
   setEditorTheme: (editorTheme: State['editorTheme']) => void
   setShortCut: (shortcut: State['shortcut']) => void
+  setShortCutDefault: () => void
+  setShortCutCase: () => void
   setResizeRatio: (resizeRatio: State['resizeRatio']) => void
   setDisplayArea: (displayArea: State['displayArea']) => void
 }
 
 const defaultShortCut = `{
+  "$schema": "schema",
+  "name": "Test",
+  "categories": [
+    {
+      "name": "Test",
+      "shortcuts": [
+        {
+          "command": { "win": "Ctrl+C", "mac": "Command+C", "linux": "Ctrl+C" },
+          "description": "复制"
+        }
+      ]
+    }
+  ]
+}
+`
+
+const defaultShortCutCase = `{
   "$schema": "schema",
   "name": "Postman",
   "categories": [
@@ -179,6 +198,8 @@ const useGlobalStore = create<State & Action>((set) => ({
   setOS: (os) => set(() => ({ os })),
   setEditorTheme: (editorTheme) => set(() => ({ editorTheme })),
   setShortCut: (shortcut) => set(() => ({ shortcut })),
+  setShortCutDefault: () => set(() => ({ shortcut: defaultShortCut })),
+  setShortCutCase: () => set(() => ({ shortcut: defaultShortCutCase })),
   setResizeRatio: (resizeRatio) => set(() => ({ resizeRatio })),
   setDisplayArea: (displayArea) => set(() => ({ displayArea })),
 }))
