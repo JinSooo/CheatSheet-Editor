@@ -3,9 +3,6 @@ import { Monaco, Editor as MonacoEditor } from '@monaco-editor/react'
 import schema from '@/public/json/schema.json'
 import useGlobalStore from '@/lib/store'
 
-// 编辑器是否存在错误
-let hasError = false
-
 const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(
   { className, ...props },
   ref,
@@ -34,15 +31,7 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
 
   // biome-ignore lint/suspicious/noExplicitAny: <explanation>
   const handleChange = (value: string | undefined, ev: any) => {
-    if (hasError) return
-
     setShortCut(value ?? '')
-  }
-
-  // biome-ignore lint/suspicious/noExplicitAny: <explanation>
-  const handleValidate = (markers: any) => {
-    if (markers.length === 0) hasError = false
-    else hasError = true
   }
 
   return (
@@ -52,7 +41,6 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
         options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }}
         onMount={handleMount}
         onChange={handleChange}
-        onValidate={handleValidate}
       />
     </div>
   )

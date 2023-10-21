@@ -28,3 +28,17 @@ export const throttle = (fn: (...args: unknown[]) => void, delay = 100) => {
     }, delay)
   }
 }
+
+// 下载文件
+export const download = (file: File) => {
+  const tmpLink = document.createElement('a')
+  const objectUrl = URL.createObjectURL(file)
+
+  tmpLink.href = objectUrl
+  tmpLink.download = file.name
+  document.body.appendChild(tmpLink)
+  tmpLink.click()
+
+  document.body.removeChild(tmpLink)
+  URL.revokeObjectURL(objectUrl)
+}

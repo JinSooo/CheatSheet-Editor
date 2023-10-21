@@ -5,11 +5,15 @@ import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
 import useGlobalStore from '@/lib/store'
+import { ShortCut } from '@/lib/types'
+import { download, toastIconError, toastStyle } from '@/lib/utils'
+import toast from 'react-hot-toast'
 
 const ToolBar = () => {
   const { setTheme } = useTheme()
-  const [setEditorTheme, setDisplayArea, displayArea, setShortCutDefault, setShortCutCase] = useGlobalStore(
+  const [shortcut, setEditorTheme, setDisplayArea, displayArea, setShortCutDefault, setShortCutCase] = useGlobalStore(
     (state) => [
+      state.shortcut,
       state.setEditorTheme,
       state.setDisplayArea,
       state.displayArea,
@@ -18,6 +22,7 @@ const ToolBar = () => {
     ],
   )
 
+  /* --------------------------------- Editor --------------------------------- */
   const handleEditorTheme = (e: MouseEvent<HTMLUListElement>) => {
     // @ts-ignore
     if (e.target.tagName === 'A') {
@@ -34,11 +39,16 @@ const ToolBar = () => {
     setShortCutCase()
   }
 
-  const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
-    // @ts-ignore
-    if (e.target.tagName === 'A') {
-      // @ts-ignore
-      setTheme(e.target.dataset.key)
+  /* --------------------------------- Display -------------------------------- */
+  const handleExport = () => {
+    try {
+      const shortcutObj = JSON.parse(shortcut) as ShortCut
+      const file = new File([shortcut], `${shortcutObj.name}.json`, {
+        type: 'text/plain',
+      })
+      download(file)
+    } catch (error) {
+      toast('转换失败,请检查你的文件是否存在错误!', { icon: toastIconError, style: toastStyle })
     }
   }
 
@@ -50,6 +60,14 @@ const ToolBar = () => {
   const handleOnlyDisplay = () => {
     if (displayArea === 1) return setDisplayArea(0)
     setDisplayArea(1)
+  }
+
+  const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
+    // @ts-ignore
+    if (e.target.tagName === 'A') {
+      // @ts-ignore
+      setTheme(e.target.dataset.key)
+    }
   }
 
   return (
@@ -69,7 +87,7 @@ const ToolBar = () => {
       </div>
       <div className='flex gap-3'>
         <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' />
-        <DropDownButton icon={<Share size={18} />} tooltip='导出' position='right' />
+        <DropDownButton icon={<Share size={18} />} tooltip='导出' position='right' onClick={handleExport} />
         <DropDownButton
           icon={<PanelLeftOpen size={18} color={displayArea === -1 ? '#3ABFF8' : 'currentColor'} />}
           tooltip={displayArea === -1 ? '恢复默认' : '仅编辑区'}
