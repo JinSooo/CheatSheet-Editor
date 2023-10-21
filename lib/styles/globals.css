@@ -13,6 +13,7 @@
   --background-header: #e3e3e3;
   --background-prose: #f3f3f3;
   --background-config-category: #ffffff;
+  --background-toolbar: #fafbfc;
 }
 
 [data-theme="dark"] {
@@ -24,6 +25,7 @@
   --background-header: #383838;
   --background-prose: #2c2c2c;
   --background-config-category: #2a2a2a;
+  --background-toolbar: #2e2d2d;
 }
 
 /* 字体 */

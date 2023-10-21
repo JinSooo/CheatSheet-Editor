@@ -27,7 +27,7 @@ const ToolBar = () => {
   }
 
   return (
-    <div className='flex justify-between px-3 py-1 shadow-md border-y-[1px]'>
+    <div className='flex justify-between px-3 py-1 shadow-md border-y-[1px] bg-[var(--background-toolbar)] border-y-[var(--background)]'>
       <div className='flex gap-3'>
         <DropDownButton
           icon={<Contrast size={18} />}

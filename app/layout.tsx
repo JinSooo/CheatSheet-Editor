@@ -14,7 +14,7 @@ export default function RootLayout({
         <ThemeProvider attribute='data-theme' defaultTheme='system' enableSystem>
           <div className='w-full h-full flex flex-col'>
             <Header />
-            <main className='flex-1 bg-[var(--background)]'>{children}</main>
+            <main className='flex-1'>{children}</main>
           </div>
           <Toaster />
         </ThemeProvider>
