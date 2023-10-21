@@ -6,7 +6,10 @@ import { debounce } from '@/lib/utils'
 // 默认 ShortCut 窗口显示的大小比例
 const ratio = 9 / 16
 
-const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Display(props, ref) {
+const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Display(
+  { className, ...props },
+  ref,
+) {
   const resizeRatio = useGlobalStore((state) => state.resizeRatio)
   const shortCutRef = useRef<HTMLDivElement>(null)
 
@@ -36,7 +39,7 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
   return (
     <div
       ref={ref}
-      className='w-1/2 shadow-md rounded-lg bg-[var(--background)] p-2 flex justify-center items-center'
+      className={`w-1/2 shadow-md rounded-lg bg-[var(--background)] p-2 flex justify-center items-center ${className}`}
       {...props}
     >
       <div

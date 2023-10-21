@@ -1,19 +1,21 @@
-import { create } from "zustand";
-import { OSType } from "../types";
+import { create } from 'zustand'
+import { OSType } from '../types'
 
 type State = {
-  os: OSType;
-  editorTheme: string; // 编辑器主题
-  shortcut: string;
-  resizeRatio: number; // 左右区域比例
-};
+  os: OSType
+  editorTheme: string // 编辑器主题
+  shortcut: string
+  resizeRatio: number // 左右区域比例
+  displayArea: number // -1: 仅编辑区, 0: 全部显示, 1: 仅预览区
+}
 
 type Action = {
-  setOS: (os: State["os"]) => void;
-  setEditorTheme: (editorTheme: State["editorTheme"]) => void;
-  setShortCut: (shortcut: State["shortcut"]) => void;
-  setResizeRatio: (resizeRatio: State["resizeRatio"]) => void;
-};
+  setOS: (os: State['os']) => void
+  setEditorTheme: (editorTheme: State['editorTheme']) => void
+  setShortCut: (shortcut: State['shortcut']) => void
+  setResizeRatio: (resizeRatio: State['resizeRatio']) => void
+  setDisplayArea: (displayArea: State['displayArea']) => void
+}
 
 const defaultShortCut = `{
   "$schema": "schema",
@@ -165,18 +167,20 @@ const defaultShortCut = `{
     }
   ]
 }
-`;
+`
 
 const useGlobalStore = create<State & Action>((set) => ({
   os: OSType.Windows,
-  editorTheme: "light",
+  editorTheme: 'light',
   shortcut: defaultShortCut,
   resizeRatio: 50,
+  displayArea: 0,
 
   setOS: (os) => set(() => ({ os })),
   setEditorTheme: (editorTheme) => set(() => ({ editorTheme })),
   setShortCut: (shortcut) => set(() => ({ shortcut })),
   setResizeRatio: (resizeRatio) => set(() => ({ resizeRatio })),
-}));
+  setDisplayArea: (displayArea) => set(() => ({ displayArea })),
+}))
 
-export default useGlobalStore;
+export default useGlobalStore

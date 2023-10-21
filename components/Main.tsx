@@ -8,7 +8,7 @@ import { throttle } from '@/lib/utils'
 import useGlobalStore from '@/lib/store'
 
 const Main = () => {
-  const setResizeRatio = useGlobalStore((state) => state.setResizeRatio)
+  const [setResizeRatio, displayArea] = useGlobalStore((state) => [state.setResizeRatio, state.displayArea])
   const boxRef = useRef<HTMLDivElement>(null)
   const editorRef = useRef<HTMLDivElement>(null)
   const displayRef = useRef<HTMLDivElement>(null)
@@ -64,9 +64,15 @@ const Main = () => {
 
   return (
     <div ref={boxRef} className='w-full h-full flex p-1'>
-      <Editor ref={editorRef} />
-      <ResizeBar ref={resizeBarRef} />
-      <Display ref={displayRef} />
+      <Editor
+        ref={editorRef}
+        className={`${displayArea === 1 ? 'hidden' : ''} ${displayArea === -1 ? '!w-full' : ''}`}
+      />
+      <ResizeBar ref={resizeBarRef} className={`${displayArea === 0 ? '' : 'hidden'}`} />
+      <Display
+        ref={displayRef}
+        className={`${displayArea === -1 ? 'hidden !w-full' : ''}  ${displayArea === 1 ? '!w-full' : ''}`}
+      />
     </div>
   )
 }

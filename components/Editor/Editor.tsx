@@ -6,7 +6,10 @@ import useGlobalStore from '@/lib/store'
 // 编辑器是否存在错误
 let hasError = false
 
-const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(props, ref) {
+const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(function Editor(
+  { className, ...props },
+  ref,
+) {
   const editorTheme = useGlobalStore((state) => state.editorTheme)
   const [shortcut, setShortCut] = useGlobalStore((state) => [state.shortcut, state.setShortCut])
 
@@ -43,7 +46,7 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
   }
 
   return (
-    <div ref={ref} className='w-1/2 shadow-md rounded-lg' {...props}>
+    <div ref={ref} className={`w-1/2 shadow-md rounded-lg ${className}`} {...props}>
       <MonacoEditor
         theme={editorTheme}
         options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }}

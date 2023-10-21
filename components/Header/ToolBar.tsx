@@ -1,6 +1,6 @@
 'use client'
 
-import { Contrast, Sun } from 'lucide-react'
+import { Contrast, PanelLeftOpen, PanelRightOpen, Sun } from 'lucide-react'
 import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
@@ -8,7 +8,11 @@ import useGlobalStore from '@/lib/store'
 
 const ToolBar = () => {
   const { setTheme } = useTheme()
-  const [setEditorTheme] = useGlobalStore((state) => [state.setEditorTheme])
+  const [setEditorTheme, setDisplayArea, displayArea] = useGlobalStore((state) => [
+    state.setEditorTheme,
+    state.setDisplayArea,
+    state.displayArea,
+  ])
 
   const handleGlobalTheme = (e: MouseEvent<HTMLUListElement>) => {
     // @ts-ignore
@@ -26,6 +30,16 @@ const ToolBar = () => {
     }
   }
 
+  const handleOnlyEditor = () => {
+    if (displayArea === -1) return setDisplayArea(0)
+    setDisplayArea(-1)
+  }
+
+  const handleOnlyDisplay = () => {
+    if (displayArea === 1) return setDisplayArea(0)
+    setDisplayArea(1)
+  }
+
   return (
     <div className='flex justify-between px-3 py-1 shadow-md border-y-[1px] bg-[var(--background-toolbar)] border-y-[var(--background)]'>
       <div className='flex gap-3'>
@@ -36,10 +50,22 @@ const ToolBar = () => {
             { key: 'vs-dark', value: '暗色' },
           ]}
           tooltip='编辑器主题'
-          onClick={handleEditorTheme}
+          onItemClick={handleEditorTheme}
         />
       </div>
       <div className='flex gap-3'>
+        <DropDownButton
+          icon={<PanelLeftOpen size={18} color={displayArea === -1 ? '#3ABFF8' : 'currentColor'} />}
+          tooltip={displayArea === -1 ? '恢复默认' : '仅编辑区'}
+          position='right'
+          onClick={handleOnlyEditor}
+        />
+        <DropDownButton
+          icon={<PanelRightOpen size={18} color={displayArea === 1 ? '#3ABFF8' : 'currentColor'} />}
+          tooltip={displayArea === 1 ? '恢复默认' : '仅预览区'}
+          position='right'
+          onClick={handleOnlyDisplay}
+        />
         <DropDownButton
           icon={<Sun size={18} />}
           items={[
@@ -49,7 +75,7 @@ const ToolBar = () => {
           ]}
           tooltip='主题'
           position='right'
-          onClick={handleGlobalTheme}
+          onItemClick={handleGlobalTheme}
         />
       </div>
     </div>
