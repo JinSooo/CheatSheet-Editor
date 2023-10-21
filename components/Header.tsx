@@ -1,35 +1,18 @@
 import { AlignHorizontalJustifyCenter } from 'lucide-react'
+import DropDownButton from './common/DropDownButton'
 
 const Header = () => {
   return (
     <header className='flex justify-between px-3 py-1 shadow-md border-b-[1px]'>
       <div className='flex gap-3'>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} />
       </div>
       <div className='flex gap-3'>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
-        <div className='w-[24px] h-[24px] flex justify-center items-center'>
-          <AlignHorizontalJustifyCenter size={18} />
-        </div>
+        <DropDownButton icon={<AlignHorizontalJustifyCenter size={18} />} items={['Light', 'Dark']} position='right' />
       </div>
     </header>
   )
