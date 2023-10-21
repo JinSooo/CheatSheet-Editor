@@ -36,8 +36,6 @@ const Category = ({ category }: Props) => {
     })
   }, [])
 
-  console.log('real-ratio', categoryRatio)
-
   return (
     <div className='box-border px-6 pb-6' style={{ width: `${categoryRatio}%` }}>
       <div className='font-bold ml-[40%] pl-3 pb-3'>{category.name}</div>

@@ -9,9 +9,9 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='zh-CN' data-theme='' style={{ colorScheme: '' }}>
+    <html lang='zh-CN'>
       <body>
-        <ThemeProvider attribute='data-theme' defaultTheme='system' enableSystem>
+        <ThemeProvider enableSystem>
           <div className='w-full h-full flex flex-col'>
             <Header />
             <main className='flex-1'>{children}</main>
