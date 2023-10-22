@@ -1,36 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
 
-## Getting Started
+<img src="docs/images/icon.png" width="70" />
 
-First, run the development server:
+### CheatSheet Editor
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<b>🎉 用于 CheatSheet 的应用快捷键可视化编辑器</b>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+![License](https://img.shields.io/github/license/JinSooo/CheatSheet.svg)
+![TypeScript](https://img.shields.io/badge/-TypeScript-blue?logo=typescript&logoColor=white)
+![Next](https://img.shields.io/badge/-NextJS-black?logo=Next.js&labelColor=000000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<br/>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<img src="docs/images/editor-light.png" width="400" />
+&nbsp
+<img src="docs/images/editor-dark.png" width="400" />
+</div>
 
-## Learn More
+# 👋 目录
 
-To learn more about Next.js, take a look at the following resources:
+- [👋 目录](#-目录)
+- [⚡️ 基本功能](#️-基本功能)
+  - [编辑区](#编辑区)
+  - [预览区](#预览区)
+- [🤝 手动编译](#-手动编译)
+  - [环境要求](#环境要求)
+  - [开始编译](#开始编译)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# ⚡️ 基本功能
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## 编辑区
 
-## Deploy on Vercel
+- 默认配置
+- 默认案例
+- 编辑器主题
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 预览区
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- 导出配置文件
+- 主题
+- 仅编辑区
+- 仅预览区
+
+# 🤝 手动编译
+
+## 环境要求
+
+- Node.js >= 18.0.0
+- pnpm >= 8.5.0
+
+## 开始编译
+
+1. Clone 仓库
+
+   ```bash
+   git clone https://github.com/JinSooo/CheatSheet-Editor.git
+   ```
+
+2. 安装依赖
+
+   ```bash
+   cd CheatSheet-Editor
+   pnpm install
+   ```
+
+3. 开发调试
+
+   ```bash
+   pnpm dev # Run the app in development mode
+   ```
+
+4. 打包构建
+
+   ```bash
+   pnpm build # Build into installation package
+   ```
