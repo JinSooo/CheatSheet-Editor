@@ -38,6 +38,7 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
     <div ref={ref} className={`w-1/2 shadow-md rounded-lg ${className}`} {...props}>
       <MonacoEditor
         theme={editorTheme}
+        value={shortcut}
         options={{ tabSize: 2, automaticLayout: true, minimap: { autohide: true } }}
         onMount={handleMount}
         onChange={handleChange}
