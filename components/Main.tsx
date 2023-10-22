@@ -63,7 +63,7 @@ const Main = () => {
   }, [])
 
   return (
-    <div ref={boxRef} className='w-full h-full flex p-1'>
+    <div ref={boxRef} className='w-full h-full flex'>
       <Editor
         ref={editorRef}
         className={`${displayArea === 1 ? 'hidden' : ''} ${displayArea === -1 ? '!w-full' : ''}`}

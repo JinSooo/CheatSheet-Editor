@@ -14,6 +14,7 @@
   --toolbar: #fafbfc;
   --resize-bar-fore: #c0c0c0;
   --resize-bar-bg: #7f8081;
+  --border: #e5e7eb;
 }
 
 [data-theme="dark"] {
@@ -26,6 +27,7 @@
   --toolbar: #2e2d2d;
   --resize-bar-fore: #7f8081;
   --resize-bar-bg: #c0c0c0;
+  --border: #3f3f3f;
 }
 
 /* 字体 */

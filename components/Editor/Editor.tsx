@@ -35,7 +35,7 @@ const Editor = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(functi
   }
 
   return (
-    <div ref={ref} className={`w-1/2 shadow-md rounded-lg ${className}`} {...props}>
+    <div ref={ref} className={`w-1/2 ${className}`} {...props}>
       <MonacoEditor
         theme={editorTheme}
         value={shortcut}

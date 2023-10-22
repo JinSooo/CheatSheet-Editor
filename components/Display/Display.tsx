@@ -39,7 +39,7 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
   return (
     <div
       ref={ref}
-      className={`w-1/2 shadow-md rounded-lg bg-[var(--background)] p-2 flex justify-center items-center ${className}`}
+      className={`w-1/2 bg-[var(--background)] p-2 flex justify-center items-center ${className}`}
       {...props}
     >
       <div
