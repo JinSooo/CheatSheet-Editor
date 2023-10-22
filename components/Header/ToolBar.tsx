@@ -1,6 +1,6 @@
 'use client'
 
-import { Contrast, HelpCircle, ListRestart, PanelLeftOpen, PanelRightOpen, RotateCcw, Share, Sun } from 'lucide-react'
+import { Contrast, Github, HelpCircle, ListRestart, PanelLeftOpen, PanelRightOpen, RotateCcw, Share, Sun } from 'lucide-react'
 import DropDownButton from '../common/DropDownButton'
 import { MouseEvent } from 'react'
 import { useTheme } from 'next-themes'
@@ -40,6 +40,14 @@ const ToolBar = () => {
   }
 
   /* --------------------------------- Display -------------------------------- */
+  const handleGithubCheatSheet = () => {
+    window.open('https://github.com/JinSooo/CheatSheet')
+  }
+
+  const handleGithubCheatSheetEditor = () => {
+    window.open('https://github.com/JinSooo/CheatSheet-Editor')
+  }
+
   const handleHelp = () => {
     window.open('https://github.com/JinSooo/CheatSheet-Editor/issues')
   }
@@ -77,6 +85,8 @@ const ToolBar = () => {
   return (
     <div className='flex justify-between px-3 py-1 shadow-md border-y-[1px] border-y-[var(--border)] bg-[var(--toolbar)]'>
       <div className='flex gap-3'>
+        <DropDownButton icon={<RotateCcw size={18} />} tooltip='重置' onClick={handleEditorReset} />
+        <DropDownButton icon={<ListRestart size={18} />} tooltip='案例' onClick={handleEditorCase} />
         <DropDownButton
           icon={<Contrast size={18} />}
           items={[
@@ -86,12 +96,23 @@ const ToolBar = () => {
           tooltip='编辑器主题'
           onItemClick={handleEditorTheme}
         />
-        <DropDownButton icon={<RotateCcw size={18} />} tooltip='重置' onClick={handleEditorReset} />
-        <DropDownButton icon={<ListRestart size={18} />} tooltip='案例' onClick={handleEditorCase} />
       </div>
       <div className='flex gap-3'>
-        <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' onClick={handleHelp} />
-        <DropDownButton icon={<Share size={18} />} tooltip='导出' position='right' onClick={handleExport} />
+        <DropDownButton icon={<Github size={18} />} tooltip='CheatSheet' onClick={handleGithubCheatSheet} />
+        <DropDownButton icon={<Github size={18} />} tooltip='CheatSheet-Editor' onClick={handleGithubCheatSheetEditor} />
+        <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' onClick={handleHelp} />
+        <DropDownButton icon={<Share size={18} />} tooltip='导出' onClick={handleExport} />
+        <DropDownButton
+          icon={<Sun size={18} />}
+          items={[
+            { key: 'system', value: '系统默认' },
+            { key: 'light', value: '白天模式' },
+            { key: 'dark', value: '夜间模式' },
+          ]}
+          tooltip='主题'
+          position='right'
+          onItemClick={handleGlobalTheme}
+        />
         <DropDownButton
           icon={<PanelLeftOpen size={18} color={displayArea === -1 ? '#3ABFF8' : 'currentColor'} />}
           tooltip={displayArea === -1 ? '恢复默认' : '仅编辑区'}
@@ -103,17 +124,6 @@ const ToolBar = () => {
           tooltip={displayArea === 1 ? '恢复默认' : '仅预览区'}
           position='right'
           onClick={handleOnlyDisplay}
-        />
-        <DropDownButton
-          icon={<Sun size={18} />}
-          items={[
-            { key: 'system', value: '系统默认' },
-            { key: 'light', value: '白天模式' },
-            { key: 'dark', value: '夜间模式' },
-          ]}
-          tooltip='主题'
-          position='right'
-          onItemClick={handleGlobalTheme}
         />
       </div>
     </div>

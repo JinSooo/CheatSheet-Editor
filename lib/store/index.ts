@@ -19,7 +19,7 @@ type Action = {
   setDisplayArea: (displayArea: State['displayArea']) => void
 }
 
-const defaultShortCut = `{
+export const defaultShortCut = `{
   "$schema": "schema",
   "name": "Test",
   "categories": [
@@ -191,7 +191,7 @@ const defaultShortCutCase = `{
 const useGlobalStore = create<State & Action>((set) => ({
   os: OSType.Windows,
   editorTheme: 'light',
-  shortcut: localStorage.getItem('shortcut') ?? defaultShortCut,
+  shortcut: defaultShortCut,
   resizeRatio: 50,
   displayArea: 0,
 
