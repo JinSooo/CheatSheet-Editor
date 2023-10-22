@@ -87,4 +87,8 @@ body {
   .shortcut-tooltip > .tooltip:after {
     visibility: hidden;
   }
+
+  .shadow-all {
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 15px;
+  }
 }

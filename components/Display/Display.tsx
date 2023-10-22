@@ -39,12 +39,12 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
   return (
     <div
       ref={ref}
-      className={`w-1/2 bg-[var(--background)] p-2 flex justify-center items-center ${className}`}
+      className={`w-1/2 bg-[var(--background)] p-8 flex justify-center items-center ${className}`}
       {...props}
     >
       <div
         ref={shortCutRef}
-        className='flex-1 bg-[var(--background-fore)] text-[var(--foreground)] overflow-auto no-scrollbar shadow-lg rounded-[16px]'
+        className='flex-1 bg-[var(--background-fore)] text-[var(--foreground)] overflow-auto no-scrollbar shadow-all rounded-[16px]'
       >
         <ShortCut />
       </div>
