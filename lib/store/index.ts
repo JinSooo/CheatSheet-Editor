@@ -191,15 +191,24 @@ const defaultShortCutCase = `{
 const useGlobalStore = create<State & Action>((set) => ({
   os: OSType.Windows,
   editorTheme: 'light',
-  shortcut: defaultShortCut,
+  shortcut: localStorage.getItem('shortcut') ?? defaultShortCut,
   resizeRatio: 50,
   displayArea: 0,
 
   setOS: (os) => set(() => ({ os })),
   setEditorTheme: (editorTheme) => set(() => ({ editorTheme })),
-  setShortCut: (shortcut) => set(() => ({ shortcut })),
-  setShortCutDefault: () => set(() => ({ shortcut: defaultShortCut })),
-  setShortCutCase: () => set(() => ({ shortcut: defaultShortCutCase })),
+  setShortCut: (shortcut) => set(() => {
+    localStorage.setItem('shortcut', shortcut)
+    return { shortcut }
+  }),
+  setShortCutDefault: () => set(() => {
+    localStorage.setItem('shortcut', defaultShortCut)
+    return { shortcut: defaultShortCut }
+  }),
+  setShortCutCase: () => set(() => {
+    localStorage.setItem('shortcut', defaultShortCutCase)
+    return { shortcut: defaultShortCutCase }
+  }),
   setResizeRatio: (resizeRatio) => set(() => ({ resizeRatio })),
   setDisplayArea: (displayArea) => set(() => ({ displayArea })),
 }))
