@@ -10,7 +10,7 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
   { className, ...props },
   ref,
 ) {
-  const resizeRatio = useGlobalStore((state) => state.resizeRatio)
+  const [resizeRatio, displayArea] = useGlobalStore((state) => [state.resizeRatio, state.displayArea])
   const shortCutRef = useRef<HTMLDivElement>(null)
 
   const adjustShortCutSize = useCallback(
@@ -30,7 +30,7 @@ const Display = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(funct
 
   useEffect(() => {
     adjustShortCutSize()
-  }, [resizeRatio])
+  }, [resizeRatio, displayArea])
 
   useEffect(() => {
     init()
