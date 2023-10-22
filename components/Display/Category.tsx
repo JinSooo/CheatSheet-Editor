@@ -10,7 +10,7 @@ interface Props {
 }
 
 const Category = ({ category }: Props) => {
-  const [os, resizeRatio] = useGlobalStore((state) => [state.os, state.resizeRatio])
+  const [os, resizeRatio, displayArea] = useGlobalStore((state) => [state.os, state.resizeRatio, state.displayArea])
   // 根据显示区域的比例计算分类比例
   const [categoryRatio, setCategoryRatio] = useState(50)
 
@@ -18,7 +18,9 @@ const Category = ({ category }: Props) => {
     if (typeof window === 'undefined') return 50
 
     const displayRatio = 100 - resizeRatio
-    const width = (document.body.clientWidth * displayRatio) / 100
+    let width
+    if (displayArea === 1) width = document.body.clientWidth
+    else width = (document.body.clientWidth * displayRatio) / 100
 
     if (width >= 1280) return 25
     else if (width >= 1024) return 33
@@ -28,7 +30,7 @@ const Category = ({ category }: Props) => {
 
   useEffect(() => {
     setCategoryRatio(calculateCategoryRatio())
-  }, [resizeRatio])
+  }, [resizeRatio, displayArea])
 
   useEffect(() => {
     window.addEventListener('resize', () => {
