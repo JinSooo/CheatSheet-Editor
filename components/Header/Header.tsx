@@ -2,7 +2,7 @@ import ToolBar from './ToolBar'
 
 const Header = () => {
   return (
-    <header>
+    <header className='bg-[var(--header)]'>
       {/* <div className='h-14 flex justify-between items-center mx-4'>
         <div className='flex gap-4 items-center'>
           <Image src='/imgs/icon.png' width={28} height={28} alt='icon' />

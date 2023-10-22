@@ -26,7 +26,7 @@ const Main = () => {
       const startX = e.clientX
       const left = resizeBar.offsetLeft
       const maxT = box.clientWidth - resizeBar.offsetWidth // 容器宽度 - 左边区域的宽度 = 右边区域的宽度
-      resizeBar.style.backgroundColor = '#7F8081'
+      resizeBar.style.backgroundColor = 'var(--resize-bar-bg)'
 
       // @ts-ignore
       const handleMouseMove = throttle((e: MouseEvent) => {
@@ -51,7 +51,7 @@ const Main = () => {
       document.body.onmouseup = () => {
         document.body.onmousemove = null
         document.body.onmouseup = null
-        resizeBar.style.backgroundColor = '#C0C0C0'
+        resizeBar.style.backgroundColor = 'var(--resize-bar-fore)'
       }
 
       return false

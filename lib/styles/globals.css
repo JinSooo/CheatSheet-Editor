@@ -10,10 +10,10 @@
   --background-rgba: 242, 242, 242;
   --background-fore: #fafafa; /* 背景色上层区分色(用于分类)：侧边栏选中、 */
   --background-fore-rgba: 250, 250, 250;
-  --background-header: #e3e3e3;
-  --background-prose: #f3f3f3;
-  --background-config-category: #ffffff;
-  --background-toolbar: #fafbfc;
+  --header: #f7f7f7;
+  --toolbar: #fafbfc;
+  --resize-bar-fore: #c0c0c0;
+  --resize-bar-bg: #7f8081;
 }
 
 [data-theme="dark"] {
@@ -22,10 +22,10 @@
   --background-rgba: 17, 17, 17;
   --background-fore: #1f1f1f;
   --background-fore-rgba: 31, 31, 31;
-  --background-header: #383838;
-  --background-prose: #2c2c2c;
-  --background-config-category: #2a2a2a;
-  --background-toolbar: #2e2d2d;
+  --header: #383838;
+  --toolbar: #2e2d2d;
+  --resize-bar-fore: #7f8081;
+  --resize-bar-bg: #c0c0c0;
 }
 
 /* 字体 */
@@ -75,12 +75,14 @@ body {
 
   /* 修改提示框的选中背景色和字体颜色 */
   .shortcut-tooltip > .tooltip:before {
-    color: var(--foreground);
     /* tooltip换行显示 */
     white-space: break-spaces;
     /* 显示位置 */
     left: 1rem;
     transform: none;
     max-width: 15rem;
+  }
+  .shortcut-tooltip > .tooltip:after {
+    visibility: hidden;
   }
 }
