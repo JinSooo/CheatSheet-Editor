@@ -30,13 +30,6 @@
   --border: #3f3f3f;
 }
 
-/* 字体 */
-@font-face {
-  font-style: normal;
-  font-family: "HarmonyOS";
-  src: url("/fonts/HarmonyOS_Sans_SC_Regular.ttf") format("truetype");
-}
-
 /* 修改滚动条样式 */
 *::-webkit-scrollbar {
   width: 5px;
@@ -56,7 +49,6 @@ body {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-  font-family: "HarmonyOS";
 }
 
 @layer components {
