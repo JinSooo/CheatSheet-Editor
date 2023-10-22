@@ -40,6 +40,10 @@ const ToolBar = () => {
   }
 
   /* --------------------------------- Display -------------------------------- */
+  const handleHelp = () => {
+    window.open('https://github.com/JinSooo/CheatSheet-Editor/issues')
+  }
+
   const handleExport = () => {
     try {
       const shortcutObj = JSON.parse(shortcut) as ShortCut
@@ -86,7 +90,7 @@ const ToolBar = () => {
         <DropDownButton icon={<ListRestart size={18} />} tooltip='案例' onClick={handleEditorCase} />
       </div>
       <div className='flex gap-3'>
-        <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' />
+        <DropDownButton icon={<HelpCircle size={18} />} tooltip='帮助' position='right' onClick={handleHelp} />
         <DropDownButton icon={<Share size={18} />} tooltip='导出' position='right' onClick={handleExport} />
         <DropDownButton
           icon={<PanelLeftOpen size={18} color={displayArea === -1 ? '#3ABFF8' : 'currentColor'} />}
